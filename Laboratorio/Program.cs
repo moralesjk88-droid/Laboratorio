@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 
 public class Prestamo
 {
@@ -25,6 +26,38 @@ public class Prestamo
 
     public string ObtenerDatos()
     {
-        return "Cod: " + codigo + " | Estudiante: " + estudiante + " | Equipo: " + equipo + " | Estado: " + estado;
+        return "Codigo: " + codigo + Environment.NewLine +
+                "Nombre: " + estudiante + Environment.NewLine +
+                "carnet: " + carnet + Environment.NewLine +
+                "carrera: " + carrera + Environment.NewLine +
+                "Equipo: " + equipo + Environment.NewLine +
+                "cantidad: " + cantidad + Environment.NewLine +
+                "Estado: " + estado + Environment.NewLine +
+                "----------------------------" + Environment.NewLine;
+
+            }
+
+    public void GuardarEnArchivo(string ruta)
+    {
+        File.AppendAllText(ruta, ObtenerDatos());
     }
+
+    public string Codigo
+    {
+        get { return codigo; }
+    }
+
+    public string ResumenConsola()
+    {
+        return "Codigo: " + codigo + " | Estudiante: " + estudiante + " | Equipo: " + equipo;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+
+    }
+
 }
